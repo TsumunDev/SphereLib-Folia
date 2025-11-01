@@ -25,7 +25,7 @@ public class ParticleUtils {
          */
     public static void drawBox(Plugin plugin, Player player, Vector3D point1, Vector3D point2, int seconds, Particle particle){
         ParticleTask particleTask = new ParticleTask(player, seconds, () -> drawBox(player, point1, point2, particle));
-        particleTask.runTaskTimer(plugin, 0, 20);
+        particleTask.setTask(player.getScheduler().runAtFixedRate(plugin, task -> particleTask.run(), null, 1, 20));
     }
 
     /**
@@ -38,7 +38,7 @@ public class ParticleUtils {
      */
     public static void drawLine(Plugin plugin, Player player, Vector3D point1, Vector3D point2, int seconds, Particle particle){
         ParticleTask particleTask = new ParticleTask(player, seconds, () -> drawLine(player, point1, point2, particle));
-        particleTask.runTaskTimer(plugin, 0, 20);
+        particleTask.setTask(player.getScheduler().runAtFixedRate(plugin, task -> particleTask.run(), null, 1, 20));
     }
 
 
@@ -53,7 +53,7 @@ public class ParticleUtils {
      */
     public static void drawPane(Plugin plugin, Player player, Vector3D point1, Vector3D point2, int seconds, Particle particle){
         ParticleTask particleTask = new ParticleTask(player, seconds, () -> drawPane(player, point1, point2, particle));
-        particleTask.runTaskTimer(plugin, 0, 20);
+        particleTask.setTask(player.getScheduler().runAtFixedRate(plugin, task -> particleTask.run(), null, 1, 20));
     }
 
     private static void drawPane(Player player, Vector3D point1, Vector3D point2,Particle particle){
